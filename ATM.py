@@ -133,6 +133,3 @@ class ATM:
 		system('clear')
 
 ATM()
-
-
-# add languages
