@@ -87,17 +87,19 @@ class ATM:
                 self.logged()
         elif self.val == 2:
             print(f'Your old pin code is {self.pin}')
-            for i in range(3):
-                new = input('Enter new pin : ')
-                if i == 2:
-                    print('Your card have been blocked')
-                    break
-                elif len(new) == 4 and new.isdigit():
-                    self.pin = new
-                    print(f'Your new Password is {self.pin}')
-                    log = int(input('Enter 0 to return back : '))
-                    if log == 0:
-                        self.logged()
+            new_pin = input('Enter new pin : ')
+            if len(new_pin) == 4 and new_pin.isdigit():
+                self.pin = new_pin
+                print(f'Your new Password is {self.pin}')
+                log = int(input('Enter 0 to return back : '))
+                if log == 0:
+                    self.logged()
+            else:
+                for i in range(3):
+                    new_pin = input('Enter new pin : ')
+                    if i == 2:
+                        print('Your card have been blocked')
+                        break
         elif self.val == 3:
             self.takeCash()
         elif self.val == 4:
