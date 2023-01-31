@@ -59,11 +59,11 @@ class ATM:
             self.logIn()
         else:
             self.pin = input('Enter your card pin code : ')
-            self.balance = input('Enter your balance : ')
+            self.balance = int(input('Enter your balance : '))
             if len(self.pin) == 4:
                 with open('db.txt', 'r') as data:
                     for line in data.readlines():
-                        if self.name == line.split()[0] and self.surname == line.split()[1] and self.pin == line.split()[3] and self.balance == line.split()[4]:
+                        if self.name == line.split()[0] and self.surname == line.split()[1] and self.pin == line.split()[3] and self.balance == int(line.split()[4]):
                             print(f'User : {self.name} {self.surname}')
                             print(f'Pin : {self.pin}')
                             print(f'Balance : {self.balance}')
@@ -121,7 +121,7 @@ class ATM:
         system('clear')
         print(f'Your balance is {self.balance}')
         cash = int(input('Enter how much you want : '))
-        if cash <= self.balance:
+        if cash <= int(self.balance):
             self.balance -= cash
             print(f'Left : {self.balance}')
             log = int(input('Enter 0 to return back : '))
